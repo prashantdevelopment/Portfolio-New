@@ -1,22 +1,217 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body, 
+html,
+body,
 #root {
   width: 100%;
   background-color: black;
+  color: whitesmoke;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
-main{
+main {
   position: relative;
 }
 
 section {
   min-height: 100vh;
-  border: 2px solid white;
+
   position: relative;
   z-index: 2;
 }
+
+#canvas-elem::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url('/background-l.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.3s linear;
+
+}
+
+#section-1 {
+  position: relative;
+
+  --gap: 5rem;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    padding-top: 3rem;
+    .nav-elem:nth-child(2) {
+      i {
+        color: red;
+      }
+    }
+    svg {
+      max-width: 10rem;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .middle {
+    gap: var(--gap);
+
+    display: flex;
+
+    .left,
+    .right {
+      width: 50%;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-block: 5rem;
+    }
+    h1 {
+      font-size: 5rem;
+      line-height: 0.8;
+      text-align: right;
+    }
+  }
+  .bottom {
+    gap: var(--gap);
+    display: flex;
+    .left,
+    .right {
+      width: 50%;
+    }
+    .right {
+      p {
+        font-weight: 200;
+        line-height: 1.5;
+      }
+    }
+  }
+  .first-line {
+    width: 32rem;
+    background-color: rgba(255, 0, 0, 0.403);
+    height: 1px;
+    position: absolute;
+    transform: rotate(45deg) translate(0, -17rem);
+  }
+  .second-line {
+    width: 15rem;
+    background-color: rgba(255, 0, 0, 0.403);
+    height: 1px;
+    position: absolute;
+    transform: rotate(135deg);
+    top: 28%;
+    right: 12%;
+  }
+}
+
+#section-2 {
+  .titles {
+    display: flex;
+    flex-direction: column;
+    padding-left: 17rem;
+    padding-block: 9rem;
+
+    .title {
+      display: flex;
+      gap: 4rem;
+      opacity: 0.2;
+      padding-block: 2rem;
+      transition: all 0.3s linear;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 100;
+      line-height: 1;
+    }
+    small {
+      margin-top: 0.7rem;
+      font-size: 0.5rem;
+    }
+    .title:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+}
+main:has(#section-2 .title:hover) #canvas-elem::after {
+  opacity: 0;
+
+}
+
+.images{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.3s linear;
+  }
+
+}
+main:has(#section-2 .title[img-title="tommorowland"]:hover) .images #tommorowland
+{ 
+  opacity: 1;
+  background-color: rgb(3, 7, 24);
+}
+main:has(#section-2 .title[img-title="navy-pier"]:hover) .images #navy-pier
+{ 
+  opacity: 1;
+  background-color: rgb(2, 5, 19);
+}
+main:has(#section-2 .title[img-title="msi-chicago"]:hover) .images #msi-chicago
+{ 
+  opacity: 1;
+    background-color: rgb(2, 5, 19);
+  }
+main:has(#section-2 .title[img-title="phone"]:hover) .images #phone
+{ 
+  opacity: 1;
+    background-color: rgb(2, 5, 19);
+  }
+main:has(#section-2 .title[img-title="kikk"]:hover) .images #kikk
+{ 
+  opacity: 1;
+    background-color: rgba(0, 19, 101, 0.403);
+  }
+main:has(#section-2 .title[img-title="kennedy"]:hover) .images #kennedy
+{ 
+  opacity: 1;
+    background-color: rgb(2, 5, 19);
+  }
+main:has(#section-2 .title[img-title="opera"]:hover) .images #opera
+{ 
+  opacity: 1;
+    background-color: rgb(180, 2, 2);
+  }
